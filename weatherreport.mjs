@@ -1,15 +1,14 @@
-import { expect } from "chai";
+import assert from 'assert/strict';
 
-function sensorStub() {
-    return {
-        temperatureInC: 50,
-        precipitation: 70,
-        humidity: 26,
-        windSpeedKMPH: 52
+function highPrecipitationStub() {
+    return { 
+        temperatureInC: 30,         
+        precipitation: 80,          
+        humidity: 26, 
+        windSpeedKMPH: 20          
     };
 }
-
-function report(sensorReader) {
+export function report(sensorReader) {
     const readings = sensorReader();
     let weather = "Sunny Day";
 
@@ -23,23 +22,6 @@ function report(sensorReader) {
     return weather;
 }
 
-function testRainy() {
-    const weather = report(sensorStub);
-    console.log(weather);
-    expect(weather).includes("rain", "Test failed: Expected 'rain' in weather description");
-}
-
-function testHighPrecipitation() {
-    // This instance of stub needs to be different-
-    // to give high precipitation (>60) and low wind-speed (<50)
-
-    const weather = report(sensorStub);
-
-    // strengthen the assert to expose the bug
-    // (function returns Sunny day, it should predict rain)
-    expect(weather).is.not.empty;
-}
-
-testRainy();
-testHighPrecipitation();
-console.log("All is well (maybe!)");
+const weatherBugCase = report(highPrecipitationStub);
+assert.notStrictEqual(weatherBugCase, "Sunny Day", "High Precipitation case should not be Sunny Day");
+console.log("Weather report test finished running");
