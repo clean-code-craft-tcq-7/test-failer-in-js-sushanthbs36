@@ -1,4 +1,3 @@
-import assert from 'assert/strict';
 const majorColors = ["White", "Red", "Black", "Yellow", "Violet"];
 const minorColors = ["Blue", "Orange", "Green", "Brown", "Slate"];
 
@@ -30,8 +29,3 @@ const entries = generateColorMapEntries();
 
 const expectedFirstPipePos = getFirstPipePosition(entries[0]); 
 const actualFirstPipePos = getFirstPipePosition(entries[10]); 
-
-assert.strictEqual(actualFirstPipePos, expectedFirstPipePos, 
-    `Misalignment: Expected first pipe position at index ${expectedFirstPipePos}, but it is at index ${actualFirstPipePos}`);
-console.log('Misaligned test finished running');
-

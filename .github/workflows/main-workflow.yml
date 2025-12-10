@@ -15,14 +15,5 @@ jobs:
       - name: Install Dependencies
         run:  npm install
       
-      - name: tshirts fail
-        if: always()
-        run: node tshirts.mjs
-
-      - name: misaligned fail
-        if: always()
-        run: node misaligned.mjs
-
-      - name: weather fail
-        if: always()
-        run: node weatherreport.mjs
+      - name: Run all Tests using Mocha
+        run: npx mocha 'test_*.mjs'
