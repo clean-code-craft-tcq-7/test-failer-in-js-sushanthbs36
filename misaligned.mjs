@@ -24,8 +24,3 @@ export function printColorMap(){
 export function getFirstPipePosition(entry){
     return entry.indexOf('|')
 }
-
-const entries = generateColorMapEntries();
-
-const expectedFirstPipePos = getFirstPipePosition(entries[0]); 
-const actualFirstPipePos = getFirstPipePosition(entries[10]); 
